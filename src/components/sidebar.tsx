@@ -40,8 +40,8 @@ export const Sidebar = () => {
                 pathname == item.path ? "bg-primary text-white" : ""
               )}
             >
-              {Icon && <Icon className="size-4" />}
-              <span className={cn("leading-4 line-clamp-1",isCollapse ? "hidden" : "block")}>
+              {Icon && <Icon className="size-5" />}
+              <span className={cn("leading-4 line-clamp-1 text-[16px]",isCollapse ? "hidden" : "block")}>
                 {item.title}
               </span>
             </Link>

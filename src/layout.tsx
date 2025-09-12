@@ -3,7 +3,7 @@ import { Sidebar } from "./components/sidebar";
 
 export const Layout = () => {
   return (
-    <div className="flex h-screen">
+    <div className="flex min-h-screen">
       <Sidebar />
       <main className="w-full bg-background">
         <Outlet />

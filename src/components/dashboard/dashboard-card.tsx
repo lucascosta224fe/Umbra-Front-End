@@ -1,5 +1,7 @@
+import type { ReactNode } from "react";
+
 type DashboardCardProps = {
-  icon?: any;
+  icon?: ReactNode;
   title: string;
   number: string;
 };
@@ -11,8 +13,8 @@ export const DashboardCard = ({ icon, title, number }: DashboardCardProps) => {
         {icon}
       </div>
       <div className="flex flex-col">
-        <p className="text-lg font-bold text-text">{number}</p>
-        <p className="text-sm text-accent">{title}</p>
+        <p className="text-[20px] font-bold text-text leading-4">{number}</p>
+        <p className="text-[16px] text-accent font-semibold">{title}</p>
       </div>
     </div>
   );
