@@ -6,51 +6,9 @@ import {
   Timer,
 } from "lucide-react";
 import { DashboardCard } from "../components/dashboard/dashboard-card";
-import { ComputerCard } from "../components/dashboard/computer-card";
+import { ComputersSection } from "../components/dashboard/computers-section";
 
 export function Dashboard() {
-  const computers = [
-    {
-      id: "1",
-      name: "Computador 1",
-      ip: "192.168.10.15",
-      mac: "0A-00-27-00-00-10",
-      ipv6: "2001:0:2877:7aa:2468:31be:40e6:2b3b",
-      usagePct: 35,
-    },
-    {
-      id: "2",
-      name: "Computador 2",
-      ip: "192.168.10.4",
-      mac: "0A-00-27-00-00-10",
-      ipv6: "2001:0:2877:7aa:2468:31be:40e6:2b3b",
-      usagePct: 28,
-    },
-    {
-      id: "3",
-      name: "Computador 3",
-      ip: "192.168.10.2",
-      mac: "0A-00-27-00-00-10",
-      ipv6: "2001:0:2877:7aa:2468:31be:40e6:2b3b",
-      usagePct: 12,
-    },
-    {
-      id: "4",
-      name: "Computador 4",
-      ip: "192.168.10.9",
-      mac: "0A-00-27-00-00-10",
-      ipv6: "2001:0:2877:7aa:2468:31be:40e6:2b3b",
-      usagePct: 48,
-    },
-    {
-      id: "5",
-      name: "Computador 5",
-      ip: "192.168.10.13",
-      mac: "0A-00-27-00-00-10",
-      ipv6: "2001:0:2877:7aa:2468:31be:40e6:2b3b",
-      usagePct: 7,
-    },
-  ];
 
   return (
     <div>
@@ -88,21 +46,7 @@ export function Dashboard() {
         </div>
 
         <div className="grid grid-cols-[1fr_333px] gap-6">
-          <div className="flex flex-col gap-4">
-            <h2 className="text-text text-[20px] font-bold">Computadores</h2>
-            <div className="grid grid-cols-2 gap-4">
-              {computers.map((pc) => (
-                <ComputerCard
-                  key={pc.id}
-                  name={pc.name}
-                  ip={pc.ip}
-                  mac={pc.mac}
-                  ipv6={pc.ipv6}
-                  usagePct={pc.usagePct}
-                />
-              ))}
-            </div>
-          </div>
+          <ComputersSection />
 
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-4">
