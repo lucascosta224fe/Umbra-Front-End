@@ -1,6 +1,6 @@
 export const DrillDonm = () => {
     return(
-        <div className="w-full">
+        <div>
            Drilldown
         </div>
     )
