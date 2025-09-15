@@ -22,7 +22,7 @@ export const Sidebar = () => {
   return (
     <aside
       className={cn(
-        "relative bg-[#1B1A3F] w-[279px] flex flex-col items-center duration-200 transition-all",
+        "hidden md:flex relative bg-[#1B1A3F] w-[279px] flex-col items-center duration-200 transition-all",
         isCollapse ? "w-[84px]" : "w-72"
       )}
     >

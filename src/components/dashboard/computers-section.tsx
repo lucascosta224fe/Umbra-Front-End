@@ -3,7 +3,7 @@ import { ComputerCard } from "./computer-card";
 export function ComputersSection() {
   return (
     <section>
-      <h2 className="mb-4 text-[22px] font-bold text-white">Computadores</h2>
+      <h2 className="mb-4 text-[20px] font-bold text-white">Computadores</h2>
 
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
         {computers.map((pc) => (
