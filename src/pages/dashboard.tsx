@@ -1,11 +1,3 @@
-import {
-  FileWarning,
-  LaptopMinimal,
-  Network,
-  RotateCcw,
-  Timer,
-} from "lucide-react";
-import { DashboardCard } from "../components/dashboard/dashboard-card";
 import { ComputersSection } from "../components/dashboard/computers-section";
 import { GraphSection } from "@/components/dashboard/graph-section";
 import { TopCards } from "@/components/dashboard/top-cards";
