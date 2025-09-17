@@ -1,6 +1,6 @@
 import type { GraphSectionProps } from "@/types/graphs";
-import { ChartInOut } from "./chart-in-out";
-import { ProtocolsChart } from "./protocols-chart";
+import { ChartInOut } from "./dashboard/chart-in-out";
+import { ProtocolsChart } from "./dashboard/protocols-chart";
 
 export const GraphSection = ({ inOutData, protocolsData }: GraphSectionProps) => {
   return (

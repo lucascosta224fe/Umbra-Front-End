@@ -1,13 +1,6 @@
-import { GraphSection } from "@/components/dashboard/graph-section";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { columns } from "@/components/drill-down/columns";
+import { ProtocolsTable } from "@/components/drill-down/protocols-table";
+import { GraphSection } from "@/components/graph-section";
 
 export const DrillDown = () => {
   return (
@@ -29,40 +22,7 @@ export const DrillDown = () => {
                 Sessões Ativas
               </h2>
               <div className="rounded-[16px]">
-                <div className="bg-[#1B1A3F] p-2 rounded-md">
-                  <Table className="border border-primary/40 text-white">
-                    <TableHeader className="w-full bg-card text-white hover:bg-card">
-                      <TableRow>
-                        <TableHead className="text-accent w-[100px] font-bold">
-                          Protocolo
-                        </TableHead>
-                        <TableHead className=" text-center text-accent">
-                          Endereço Local
-                        </TableHead>
-                        <TableHead className="text-center text-accent">
-                          Endereço Externo
-                        </TableHead>
-                        <TableHead className="text-accent text-right">
-                          Estado
-                        </TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {items.map((item) => {
-                        return (
-                          <TableRow key={item.name} className="p-4">
-                            <TableCell>{item.name}</TableCell>
-                            <TableCell className="text-center">
-                              {item.localAddress}
-                            </TableCell>
-                            <TableCell className="text-center">{item.externAddress}</TableCell>
-                            <TableCell className="text-right">{item.state}</TableCell>
-                          </TableRow>
-                        );
-                      })}
-                    </TableBody>
-                  </Table>
-                </div>
+                <ProtocolsTable columns={columns} data={items} />
               </div>
             </div>
           </div>
@@ -72,25 +32,27 @@ export const DrillDown = () => {
     </div>
   );
 };
+
 const items = [
-  {name: "TCP",
+  {
+    name: "TCP",
     localAddress: "127.0.0.1:6463",
-    externAddress: "kubernetes:60828",
-    state: "ESTABLISHED"
+    foreignAddress: "kubernetes:60828",
+    state: "ESTABLISHED",
   },
   {
     name: "TCP",
     localAddress: "1127.0.0.1:27060",
-    externAddress: "kubernetes:62453",
-    state: "SYN_SENT"
+    foreignAddress: "kubernetes:62453",
+    state: "SYN_SENT",
   },
   {
     name: "TCP",
     localAddress: "1127.0.0.1:45654",
-    externAddress: "kubernetes:60861",
-    state: "ESTABLISHED"
-  }
-]
+    foreignAddress: "kubernetes:60861",
+    state: "ESTABLISHED",
+  },
+];
 
 const inOutData = [
   { name: "Entrada", value: 275, fill: "#0047AB" },
