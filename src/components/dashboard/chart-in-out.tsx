@@ -12,13 +12,9 @@ import {
 } from "@/components/ui/chart";
 
 import type { ChartConfig } from "@/components/ui/chart";
+import type { InOutDataProps } from "@/types/graphs";
 
 export const description = "Gráfico em rosquinha do volume dados de entrada e saída";
-
-const chartData = [
-  { name: "Entrada", value: 275, fill: "#0047AB" },
-  { name: "Saída", value: 200, fill: "#ED303C" },
-];
 
 const chartConfig = {
   value: {
@@ -34,14 +30,14 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function ChartInOut() {
+export function ChartInOut({ chartData }: {chartData: InOutDataProps[]}) {
   const totalVisitors = React.useMemo(() => {
     return chartData.reduce((acc, curr) => acc + curr.value, 0);
   }, []);
 
   return (
-    <div className="flex flex-col bg-card rounded-[16px] items-center justify-center p-6">
-      <div className="flex gap-3 items-center pb-0">
+    <div className="flex flex-col items-center justify-center">
+      <div className="flex gap-3 items-center p-2">
         <div className="bg-white rounded-full size-[40px] p-1 flex items-center justify-center aspect-square">
           <ArrowDownUp size={20} className="text-primary" />
         </div>
@@ -50,7 +46,7 @@ export function ChartInOut() {
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px] h-[210px] w-[210px]"
+          className="mx-auto aspect-square max-h-[250px] h-[224px] w-[224px]"
         >
           <PieChart>
             <ChartTooltip
@@ -62,7 +58,7 @@ export function ChartInOut() {
               data={chartData}
               dataKey="value"
               nameKey="name"
-              innerRadius={60}
+              innerRadius={65}
               strokeWidth={5}
             >
               <Label

@@ -1,3 +1,5 @@
+import { GraphSection } from "@/components/dashboard/graph-section";
+
 export const DrillDown = () => {
   return (
     <div>
@@ -8,7 +10,7 @@ export const DrillDown = () => {
         <div className="grid grid-cols-[1fr_400px] gap-5">
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-2">
-              <h2 className="text-white text-[20px] font-bold">Computador 1</h2>
+              <h2 className="text-white text-[20px] font-bold mb-2">Computador 1</h2>
               <div className="bg-card rounded-[16px] h-[560px]"></div>
             </div>
             <div className="flex flex-col gap-2">
@@ -18,9 +20,21 @@ export const DrillDown = () => {
               <div className="bg-card rounded-[16px] h-[500px]"></div>
             </div>
           </div>
-          <div className="bg-card rounded-[16px] h-[750px] mt-[38px]"></div>
+          <GraphSection inOutData={inOutData} protocolsData={protocolsData}/>
         </div>
       </div>
     </div>
   );
 };
+
+const inOutData = [
+  { name: "Entrada", value: 275, fill: "#0047AB" },
+  { name: "Saída", value: 200, fill: "#ED303C" },
+];
+
+const protocolsData = [
+  { protocol: "HTTP", pacotes: 340, fill: "#0ea2cf" },
+  { protocol: "FTP", pacotes: 305, fill: "#147c9c" },
+  { protocol: "UDP", pacotes: 237, fill: "#0b6885" },
+  { protocol: "TCP", pacotes: 150, fill: "#06485c" },
+];
