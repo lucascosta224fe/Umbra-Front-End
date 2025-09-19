@@ -22,11 +22,11 @@ const chartConfig = {
 
 export function ChartLine() {
   return (
-    <div className="bg-card rounded-[16px] px-4 pl-0 pt-4 ">
-      <div className="sm:p-4 sm:pl-1">
+    <div className="bg-card rounded-[16px] h-full px-4 pl-0 pt-4 ">
+      <div className="grid h-full sm:p-4 sm:pl-1 place-items-center">
         <ChartContainer
           config={chartConfig}
-          className="aspect-auto h-[500px] w-full"
+          className="aspect-auto h-[600px] w-full"
         >
           <LineChart accessibilityLayer data={chartData}>
             <CartesianGrid strokeDasharray="3 3" stroke="#5F56DC80" />

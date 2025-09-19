@@ -24,16 +24,16 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import React from "react";
-import { Input } from "../ui/input";
+import { Input } from "../../ui/input";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ArrowDown, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -69,8 +69,8 @@ export function ProtocolsTable<TData, TValue>({
   });
 
   return (
-    <div>
-      <div className="flex items-center py-4 gap-4">
+    <div className="pb-4">
+      <div className="flex items-center gap-4 py-4">
         <Input
           placeholder="Endereço Local"
           value={
@@ -87,7 +87,7 @@ export function ProtocolsTable<TData, TValue>({
               variant="outline"
               className="ml-auto text-white border border-primary bg-card hover:bg-primary/80 hover:text-white ring-0 focus-visible:ring-offset-0 focus-visible:ring-0"
             >
-              Columns
+              Colunas
               <ChevronDown />
             </Button>
           </DropdownMenuTrigger>
@@ -108,14 +108,16 @@ export function ProtocolsTable<TData, TValue>({
                       column.toggleVisibility(!!value)
                     }
                   >
-                    {column.id}
+                    {typeof column.columnDef.header === "string"
+                      ? column.columnDef.header
+                      : column.id}
                   </DropdownMenuCheckboxItem>
                 );
               })}
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="rounded-[16px] overflow-hidden border-primary border">
+      <div className="rounded-[16px] overflow-hidden border-primary border ">
         <Table>
           <TableHeader className="w-full text-white bg-card hover:bg-card">
             {table.getHeaderGroups().map((headerGroup) => (
@@ -135,7 +137,7 @@ export function ProtocolsTable<TData, TValue>({
               </TableRow>
             ))}
           </TableHeader>
-          <TableBody className="[&>*:nth-child(even)]:bg-card [&>*:nth-child(even)]:hover:bg-card/40 [&>*:nth-child(odd)]:bg-transparent [&>*:nth-child(odd)]:hover:bg-card/50">
+          <TableBody className="[&>*:nth-child(even)]:bg-card [&>*:nth-child(even)]:hover:bg-card/40 [&>*:nth-child(odd)]:bg-background [&>*:nth-child(odd)]:hover:bg-card/50">
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
@@ -156,34 +158,14 @@ export function ProtocolsTable<TData, TValue>({
               <TableRow>
                 <TableCell
                   colSpan={columns.length}
-                  className="h-24 text-center"
+                  className="h-24 text-center text-white"
                 >
-                  No results.
+                  Nenhum resultado encontrado.
                 </TableCell>
               </TableRow>
             )}
           </TableBody>
         </Table>
-      </div>
-      <div className="flex items-center justify-end py-4 space-x-2">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-          className="text-white bg-card border-primary/40"
-        >
-          Previous
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-          className="text-white bg-card border-primary/40"
-        >
-          Next
-        </Button>
       </div>
     </div>
   );

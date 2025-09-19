@@ -1,13 +1,8 @@
-import { columns } from "@/components/drill-down/columns";
-import { ProtocolsTable } from "@/components/drill-down/protocols-table";
+import { TableSelect } from "@/components/drill-down/table-select";
 import { GraphSection } from "@/components/graph-section";
 import { ChartLine } from "@/components/charts/chart-line";
-import { TableSelect } from "@/components/drill-down/table-select";
 
 export const DrillDown = () => {
-  const computerId = "1";
-  const ip = "192.168.10.15";
-
   return (
     <div>
       <div className="p-10">
@@ -15,49 +10,23 @@ export const DrillDown = () => {
       </div>
 
       <div className="px-10 py-5">
-        <div className="grid grid-cols-[1fr_400px] gap-5">
-          <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5">
+          <div className="grid 2xl:grid-cols-[1fr_400px] gap-5">
             <div className="flex flex-col gap-2">
-              <h2 className="text-white text-[24px] font-bold mb-2">
-                Computador {computerId}
-                <span className="text-white/60 text-[20px] font-bold">
-                  {ip}
-                </span>
+              <h2 className="text-white text-[20px] font-bold mb-2">
+                Computador 1
               </h2>
-
               <ChartLine />
             </div>
-
-            <TableSelect />
+            <GraphSection inOutData={inOutData} protocolsData={protocolsData} />
           </div>
 
-          <GraphSection inOutData={inOutData} protocolsData={protocolsData} />
+          <TableSelect />
         </div>
       </div>
     </div>
   );
 };
-
-const items = [
-  {
-    name: "TCP",
-    localAddress: "127.0.0.1:6463",
-    foreignAddress: "kubernetes:60828",
-    state: "ESTABLISHED",
-  },
-  {
-    name: "TCP",
-    localAddress: "1127.0.0.1:27060",
-    foreignAddress: "kubernetes:62453",
-    state: "SYN_SENT",
-  },
-  {
-    name: "TCP",
-    localAddress: "1127.0.0.1:45654",
-    foreignAddress: "kubernetes:60861",
-    state: "ESTABLISHED",
-  },
-];
 
 const inOutData = [
   { name: "Entrada", value: 275, fill: "#0047AB" },

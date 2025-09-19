@@ -1,13 +1,13 @@
 import type { ColumnDef } from "@tanstack/react-table"
 
-export type Payment = {
+export type ProtocolPayment = {
   name: string
   localAddress: string
   foreignAddress: string
   state: string
 }
 
-export const columns: ColumnDef<Payment>[] = [
+export const columnsActive: ColumnDef<ProtocolPayment>[] = [
   {
     accessorKey: "name",
     header: "Protocolo",
