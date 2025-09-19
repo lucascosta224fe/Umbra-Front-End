@@ -1,7 +1,8 @@
 import { columns } from "@/components/drill-down/columns";
 import { ProtocolsTable } from "@/components/drill-down/protocols-table";
 import { GraphSection } from "@/components/graph-section";
-import { TimeseriesCard } from "@/components/dashboard/timeseries-card";
+import { ChartLine } from "@/components/charts/chart-line";
+import { TableSelect } from "@/components/drill-down/table-select";
 
 export const DrillDown = () => {
   const computerId = "1";
@@ -17,31 +18,19 @@ export const DrillDown = () => {
         <div className="grid grid-cols-[1fr_400px] gap-5">
           <div className="flex flex-col gap-5">
             <div className="flex flex-col gap-2">
-              {/* Título FORA do card */}
               <h2 className="text-white text-[24px] font-bold mb-2">
-                Computador {computerId}{" "}
-                <span className="text-white/60 text-[20px] font-bold">{ip}</span>
+                Computador {computerId}
+                <span className="text-white/60 text-[20px] font-bold">
+                  {ip}
+                </span>
               </h2>
 
-              <TimeseriesCard
-                computerId={computerId}
-                pollMs={0}
-                timeWindow="20m"
-                height={520}
-              />
+              <ChartLine />
             </div>
 
-            <div className="flex flex-col gap-2">
-              <h2 className="text-white text-[20px] font-bold">
-                Sessões Ativas
-              </h2>
-              <div className="rounded-[16px]">
-                <ProtocolsTable columns={columns} data={items} />
-              </div>
-            </div>
+            <TableSelect />
           </div>
 
-          {/* COLUNA DIREITA – mantém donuts/pizza */}
           <GraphSection inOutData={inOutData} protocolsData={protocolsData} />
         </div>
       </div>
