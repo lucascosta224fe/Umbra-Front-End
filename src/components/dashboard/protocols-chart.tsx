@@ -52,6 +52,10 @@ const chartConfig = {
   pacotes: {
     label: "pacotes",
   },
+  HTTPS: {
+    label: "HTTPS",
+    color: "#0eaacf"
+  },
   HTTP: {
     label: "HTTP",
     color: "#0ea2cf",
@@ -68,4 +72,8 @@ const chartConfig = {
     label: "TCP",
     color: "#06485c",
   },
+  OTHER: {
+    label: "Outros",
+    color: "#06785c",
+  }
 } satisfies ChartConfig;

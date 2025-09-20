@@ -1,19 +1,30 @@
+import type { Computer } from "@/types/dashboard";
 import { ComputerCard } from "./computer-card";
 
-export function ComputersSection() {
+export function ComputersSection({ computers }: { computers: Computer[] }) {
+  if (!computers || computers.length === 0) {
+    return (
+      <section>
+        <div className="grid grid-cols-1 gap-6 xl:grid-cols-2 2xl:mt-11">
+          <ComputerCardSkeleton />
+          <ComputerCardSkeleton />
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section>
       <h2 className="mb-4 text-[20px] font-bold text-white">Computadores</h2>
-
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
-        {computers.map((pc) => (
+        {computers.map((pc, i) => (
           <ComputerCard
-            key={pc.id}
-            name={pc.name}
-            ip={pc.ip}
+            key={pc.mac || pc.ipv4[0]}
+            name={i}
+            ipv4={pc.ipv4[0]}
             mac={pc.mac}
-            ipv6={pc.ipv6}
-            usagePct={pc.usagePct ?? 0}
+            ipv6={pc.ipv6[0]}
+            usagePct={pc.packetsIn ?? 0}
           />
         ))}
       </div>
@@ -21,45 +32,6 @@ export function ComputersSection() {
   );
 }
 
-  const computers = [
-    {
-      id: "1",
-      name: "Computador 1",
-      ip: "192.168.10.15",
-      mac: "0A-00-27-00-00-10",
-      ipv6: "2001:0:2877:7aa:2468:31be:40e6:2b3b",
-      usagePct: 35,
-    },
-    {
-      id: "2",
-      name: "Computador 2",
-      ip: "192.168.10.4",
-      mac: "0A-00-27-00-00-10",
-      ipv6: "2001:0:2877:7aa:2468:31be:40e6:2b3b",
-      usagePct: 28,
-    },
-    {
-      id: "3",
-      name: "Computador 3",
-      ip: "192.168.10.2",
-      mac: "0A-00-27-00-00-10",
-      ipv6: "2001:0:2877:7aa:2468:31be:40e6:2b3b",
-      usagePct: 12,
-    },
-    {
-      id: "4",
-      name: "Computador 4",
-      ip: "192.168.10.9",
-      mac: "0A-00-27-00-00-10",
-      ipv6: "2001:0:2877:7aa:2468:31be:40e6:2b3b",
-      usagePct: 48,
-    },
-    {
-      id: "5",
-      name: "Computador 5",
-      ip: "192.168.10.13",
-      mac: "0A-00-27-00-00-10",
-      ipv6: "2001:0:2877:7aa:2468:31be:40e6:2b3b",
-      usagePct: 7,
-    },
-  ];
+const ComputerCardSkeleton = () => (
+  <div className="h-[250px] animate-pulse rounded-lg bg-card/50 p-4" />
+);

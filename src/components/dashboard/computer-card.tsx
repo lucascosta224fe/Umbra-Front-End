@@ -5,7 +5,7 @@ import type { ComputerCardProps } from "../../types/dashboard";
 
 export function ComputerCard({
   name,
-  ip,
+  ipv4,
   mac,
   ipv6,
   usagePct = 0,
@@ -24,13 +24,13 @@ export function ComputerCard({
       <div className="flex items-center justify-between p-4 border-b border-description2">
         <div className="flex items-center h-full gap-2">
           <span className="truncate text-[16px] font-semibold leading-5">
-            {name}
+            Computador {name + 1}
           </span>
           <span
             className="truncate text-[12px] text-[#5D5D81] cursor-pointer"
-            onClick={() => copyToClipboard(ip)}
+            onClick={() => copyToClipboard(ipv4)}
           >
-            {ip}
+            {ipv4}
           </span>
         </div>
 
@@ -50,10 +50,10 @@ export function ComputerCard({
             MAC Address
           </div>
           <div
-            className="mt-2 inline-block rounded-md bg-[#BFCDE0] px-3 py-1 text-[14px] text-[#1B1A3F] cursor-pointer"
+            className="mt-2 inline-block rounded-md bg-[#BFCDE0] px-3 py-1 text-[14px] text-[#1B1A3F] cursor-pointer h-[29px]"
             onClick={() => copyToClipboard(mac)}
           >
-            {mac}
+            {mac ? mac : "Não possui endereço mac" }
           </div>
         </div>
 
@@ -62,7 +62,7 @@ export function ComputerCard({
             IPv6
           </div>
           <div
-            className="mt-2 inline-block max-w-full truncate rounded-md bg-[#BFCDE0] px-3 py-1 text-[14px] text-[#1B1A3F] cursor-pointer"
+            className="mt-2 inline-block max-w-full truncate rounded-md bg-[#BFCDE0] px-3 py-1 text-[14px] text-[#1B1A3F] cursor-pointer h-[29px]"
             onClick={() => copyToClipboard(ipv6)}
           >
             {ipv6}
@@ -70,8 +70,8 @@ export function ComputerCard({
         </div>
       </div>
 
-      <div className="h-[18px] w-full bg-[#D7D4FF]">
-        <div className="h-[18px] bg-[#5F56DC]" style={{ width: `${pct}%` }} />
+      <div className="h-[18px] w-full bg-[#D7D4FF] mt-auto">
+        <div className="h-[18px] bg-[#5F56DC] mt-auto" style={{ width: `${pct}%` }} />
       </div>
     </div>
   );
