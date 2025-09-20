@@ -226,7 +226,7 @@ function ChartTooltipContent({
                   >
                     <div className="grid gap-1.5">
                       {nestLabel ? tooltipLabel : null}
-                      <span className="text-muted-foreground">
+                      <span className="text-white">
                         {itemConfig?.label || item.name}
                       </span>
                     </div>
@@ -288,7 +288,7 @@ function ChartLegendContent({
               <itemConfig.icon />
             ) : (
               <div
-                className="h-2 w-2 shrink-0 rounded-[2px]"
+                className="h-4 w-4 shrink-0 rounded-[4px]"
                 style={{
                   backgroundColor: item.color,
                 }}

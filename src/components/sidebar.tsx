@@ -7,7 +7,7 @@ import {
   Home,
   Radar,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const menuItems = [
   { title: "Dashboard", icon: Home, path: "/" },
@@ -18,6 +18,21 @@ const menuItems = [
 export const Sidebar = () => {
   const [isCollapse, setCollapse] = useState(false);
   const { pathname } = useLocation();
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 1024) {
+        setCollapse(true);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <aside
@@ -41,7 +56,12 @@ export const Sidebar = () => {
               )}
             >
               {Icon && <Icon className="size-5" />}
-              <span className={cn("leading-4 line-clamp-1 text-[16px]",isCollapse ? "hidden" : "block")}>
+              <span
+                className={cn(
+                  "leading-4 line-clamp-1 text-[16px]",
+                  isCollapse ? "hidden" : "block"
+                )}
+              >
                 {item.title}
               </span>
             </Link>
@@ -54,7 +74,8 @@ export const Sidebar = () => {
       >
         <ChevronRight
           className={cn(
-            "h-5 w-5 transition-transform duration-600 ease-in-out text-text hover:text-[#FFF] cursor-pointer", isCollapse ? "rotate-180" : ""
+            "h-5 w-5 transition-transform duration-600 ease-in-out text-text hover:text-[#FFF] cursor-pointer",
+            isCollapse ? "rotate-180" : ""
           )}
         />
       </button>

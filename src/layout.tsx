@@ -3,9 +3,9 @@ import { Sidebar } from "./components/sidebar";
 
 export const Layout = () => {
   return (
-    <div className="flex min-h-screen">
+    <div className="flex h-screen">
       <Sidebar />
-      <main className="w-full bg-background">
+      <main className="w-full bg-background overflow-scroll">
         <Outlet />
       </main>
     </div>
