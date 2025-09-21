@@ -2,12 +2,14 @@ import { SquareArrowOutUpRight } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { copyToClipboard } from "../../utils/copy-to-keyboard";
 import type { ComputerCardProps } from "../../types/dashboard";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 export function ComputerCard({
   name,
   ipv4,
   mac,
   ipv6,
+  packages,
   usagePct = 0,
   className,
   onOpen,
@@ -53,7 +55,7 @@ export function ComputerCard({
             className="mt-2 inline-block rounded-md bg-[#BFCDE0] px-3 py-1 text-[14px] text-[#1B1A3F] cursor-pointer h-[29px]"
             onClick={() => copyToClipboard(mac)}
           >
-            {mac ? mac : "Não possui endereço mac" }
+            {mac ?? "Não possui endereço mac"}
           </div>
         </div>
 
@@ -70,8 +72,14 @@ export function ComputerCard({
         </div>
       </div>
 
-      <div className="h-[18px] w-full bg-[#D7D4FF] mt-auto">
-        <div className="h-[18px] bg-[#5F56DC] mt-auto" style={{ width: `${pct}%` }} />
+      <div className="h-[18px] w-full bg-[#D7D4FF] mt-auto transition-all duration-400 ease-in-out">
+        <Tooltip>
+          <TooltipTrigger
+            className="h-[18px] bg-[#5F56DC] mt-auto transition-all duration-400 ease-in-out"
+            style={{ width: `${pct}%` }}
+          />
+          <TooltipContent className="">Pacotes: {packages}</TooltipContent>
+        </Tooltip>
       </div>
     </div>
   );

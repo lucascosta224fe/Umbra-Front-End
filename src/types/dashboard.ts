@@ -3,6 +3,7 @@ export type ComputerCardProps = {
   ipv4: string;
   ipv6: string;
   mac: string;
+  packages: number;
   usagePct?: number;
   className?: string;
   onOpen?: () => void;
