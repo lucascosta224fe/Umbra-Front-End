@@ -6,14 +6,8 @@ import {
   Network,
 } from "lucide-react";
 import { DashboardCard } from "./dashboard-card";
-
-export type TopCardsProps = {
-  qtdComputadores?: number;
-  qtdPacotesPerdidos?: number;
-  qtdPacotesReenviados?: number;
-  taxaTráfego?: number;
-  tempoMedioResposta?: number;
-};
+import { formatTrafficRate } from "@/utils/format-traffic-data";
+import type { TopCardsProps } from "@/types/dashboard";
 
 export const TopCards = (data: TopCardsProps) => {
   if (Object.keys(data).length === 0) {
@@ -48,7 +42,7 @@ export const TopCards = (data: TopCardsProps) => {
       <DashboardCard
         icon={<Network size={20} className="text-[#1986D3]" />}
         title={"Taxa de Tráfego"}
-        number={`${data.taxaTráfego ?? 0}mb/s`}
+        number={formatTrafficRate(data.taxaTráfego)}
       />
       <DashboardCard
         icon={<Timer size={20} className="text-[#56A412]" />}

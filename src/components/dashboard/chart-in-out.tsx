@@ -2,9 +2,7 @@ import * as React from "react";
 import { ArrowDownUp } from "lucide-react";
 import { Label, Pie, PieChart } from "recharts";
 
-import {
-  CardContent,
-} from "@/components/ui/card";
+import { CardContent } from "@/components/ui/card";
 import {
   ChartContainer,
   ChartTooltip,
@@ -14,34 +12,26 @@ import {
 import type { ChartConfig } from "@/components/ui/chart";
 import type { InOutDataProps } from "@/types/graphs";
 
-export const description = "Gráfico em rosquinha do volume dados de entrada e saída";
+export const description =
+  "Gráfico em rosquinha do volume dados de entrada e saída";
 
-const chartConfig = {
-  value: {
-    label: "Dados",
-  },
-  entrada: {
-    label: "Entrada",
-    color: "#0047AB",
-  },
-  saida: {
-    label: "Saída",
-    color: "#ED303C",
-  },
-} satisfies ChartConfig;
-
-export function ChartInOut({ chartData }: {chartData: InOutDataProps[]}) {
-  const totalVisitors = React.useMemo(() => {
+export function ChartInOut({ chartData }: { chartData: InOutDataProps[] }) {
+  const totalValue = React.useMemo(() => {
     return chartData.reduce((acc, curr) => acc + curr.value, 0);
-  }, []);
+  }, [chartData]);
+
+  const hasData = totalValue > 0;
+  const displayData = hasData ? chartData : placeholderData;
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="flex gap-3 items-center p-2">
-        <div className="bg-white rounded-full size-[40px] p-1 flex items-center justify-center aspect-square">
+      <div className="flex items-center gap-3 p-2">
+        <div className="flex size-[40px] aspect-square items-center justify-center rounded-full bg-white p-1">
           <ArrowDownUp size={20} className="text-primary" />
         </div>
-        <span className="font-bold text-[20px] text-white">Entrada e Saída</span>
+        <span className="text-[20px] font-bold text-white">
+          Entrada e Saída
+        </span>
       </div>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
@@ -49,17 +39,20 @@ export function ChartInOut({ chartData }: {chartData: InOutDataProps[]}) {
           className="mx-auto aspect-square max-h-[250px] h-[224px] w-[224px]"
         >
           <PieChart>
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel />}
-              labelClassName="text-white"
-            />
+            {hasData && (
+              <ChartTooltip
+                cursor={false}
+                content={<ChartTooltipContent hideLabel />}
+                labelClassName="text-white"
+              />
+            )}
             <Pie
-              data={chartData}
+              data={displayData}
               dataKey="value"
               nameKey="name"
               innerRadius={65}
               strokeWidth={5}
+              isAnimationActive={hasData}
             >
               <Label
                 content={({ viewBox }) => {
@@ -76,7 +69,7 @@ export function ChartInOut({ chartData }: {chartData: InOutDataProps[]}) {
                           y={viewBox.cy}
                           className="text-3xl font-bold fill-white"
                         >
-                          {totalVisitors.toLocaleString()}
+                          {hasData ? totalValue.toLocaleString() : "0"}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
@@ -97,3 +90,22 @@ export function ChartInOut({ chartData }: {chartData: InOutDataProps[]}) {
     </div>
   );
 }
+
+const chartConfig = {
+  value: {
+    label: "Dados",
+  },
+  entrada: {
+    label: "Entrada",
+    color: "#0047AB",
+  },
+  saida: {
+    label: "Saída",
+    color: "#ED303C",
+  },
+} satisfies ChartConfig;
+
+const placeholderData = [
+  { name: "Entrada", value: 1, fill: "#525252" },
+  { name: "Saída", value: 1, fill: "#525252" },
+];

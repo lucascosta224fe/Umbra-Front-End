@@ -28,3 +28,11 @@ export type InOut = {
   value: number;
   fill: string;
 };
+
+export type TopCardsProps = {
+  qtdComputadores?: number;
+  qtdPacotesPerdidos?: number;
+  qtdPacotesReenviados?: number;
+  taxaTráfego?: number;
+  tempoMedioResposta?: number;
+};
