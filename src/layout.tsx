@@ -5,7 +5,7 @@ export const Layout = () => {
   return (
     <div className="flex h-screen">
       <Sidebar />
-      <main className="w-full bg-background overflow-scroll">
+      <main className="w-full bg-background overflow-y-scroll">
         <Outlet />
       </main>
     </div>

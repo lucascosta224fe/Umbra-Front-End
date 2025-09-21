@@ -37,7 +37,7 @@ export const TopCards = (data: TopCardsProps) => {
       <DashboardCard
         icon={<RotateCcw size={20} className="text-[#B47B1E]" />}
         title={"Pacotes Reenviados"}
-        number={`${data.qtdPacotesReenviados ?? 0}`}
+        number={`${(data.qtdPacotesReenviados)?.toFixed(2) ?? 0}%`}
       />
       <DashboardCard
         icon={<Network size={20} className="text-[#1986D3]" />}
