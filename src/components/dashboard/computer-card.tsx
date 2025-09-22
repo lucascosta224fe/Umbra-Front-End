@@ -3,6 +3,7 @@ import { cn } from "../../lib/utils";
 import { copyToClipboard } from "../../utils/copy-to-keyboard";
 import type { ComputerCardProps } from "../../types/dashboard";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { useNavigate } from "react-router";
 
 export function ComputerCard({
   name,
@@ -12,9 +13,13 @@ export function ComputerCard({
   packages,
   usagePct = 0,
   className,
-  onOpen,
 }: ComputerCardProps) {
   const pct = Math.min(Math.max(usagePct, 0), 100);
+  const navigate = useNavigate()
+
+  const handleRedirect = () => {
+    navigate(`/drilldown?computer=${name + 1}`)
+  }
 
   return (
     <div
@@ -38,7 +43,7 @@ export function ComputerCard({
 
         <button
           type="button"
-          onClick={onOpen}
+          onClick={() => handleRedirect()}
           title="Abrir detalhes"
           className="grid w-8 h-8 bg-white border rounded-md cursor-pointer place-items-center border-white/10 text-primary hover:bg-white/10 hover:text-white"
         >
@@ -75,7 +80,7 @@ export function ComputerCard({
       <div className="h-[18px] w-full bg-[#D7D4FF] mt-auto transition-all duration-400 ease-in-out">
         <Tooltip>
           <TooltipTrigger
-            className="h-[18px] bg-[#5F56DC] mt-auto transition-all duration-400 ease-in-out"
+            className="h-[18px] bg-[#5F56DC] transition-all duration-400 ease-in-out"
             style={{ width: `${pct}%` }}
           />
           <TooltipContent className="">Pacotes: {packages}</TooltipContent>

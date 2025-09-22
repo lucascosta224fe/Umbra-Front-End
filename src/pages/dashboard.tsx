@@ -1,12 +1,13 @@
 import { ComputersSection } from "../components/dashboard/computers-section";
 import { GraphSection } from "@/components/graph-section";
 import { TopCards } from "@/components/dashboard/top-cards";
-import { useNetworkData } from "@/hooks/use-network-data";
+import { useDashboardStore } from "@/store/dashboard-store";
+import { useDashboardConnection } from "@/hooks/use-dashboard-connection";
 
 export function Dashboard() {
-  const { topCardsData, computers, inOutData, protocolsData } = useNetworkData(
-    "http://localhost:3000"
-  );
+  useDashboardConnection();
+
+  const { topCardsData, computers, inOutData, protocolsData } = useDashboardStore();
 
   return (
     <div>

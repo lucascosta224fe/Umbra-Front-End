@@ -14,8 +14,18 @@ export type Computer = {
   ipv4: string[];
   ipv6: string[];
   mac: string;
+  protocols: ProtocolsComputer[];
   packetsIn?: number;
   packetsOut?: number;
+}
+
+export type ProtocolsComputer = {
+  http: number;
+  https: number;
+  ftp: number;
+  tcp: number;
+  udp: number;
+  other: number;
 }
 
 export type Protocol = {

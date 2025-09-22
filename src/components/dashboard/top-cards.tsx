@@ -47,7 +47,7 @@ export const TopCards = (data: TopCardsProps) => {
       <DashboardCard
         icon={<Timer size={20} className="text-[#56A412]" />}
         title={"Tempo Médio de Resposta"}
-        number={`${data.tempoMedioResposta ?? 0}ms`}
+        number={`${(data.tempoMedioResposta)?.toFixed(0) ?? 0}ms`}
       />
     </div>
   );
