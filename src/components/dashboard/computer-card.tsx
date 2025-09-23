@@ -77,10 +77,10 @@ export function ComputerCard({
         </div>
       </div>
 
-      <div className="h-[18px] w-full bg-[#D7D4FF] mt-auto transition-all duration-400 ease-in-out">
+      <div className="h-[18px] w-full bg-[#D7D4FF] mt-auto transition-all duration-400 ease-in-out overflow-hidden">
         <Tooltip>
           <TooltipTrigger
-            className="h-[18px] bg-[#5F56DC] transition-all duration-400 ease-in-out"
+            className="h-full bg-[#5F56DC] transition-all duration-400 ease-in-out"
             style={{ width: `${pct}%` }}
           />
           <TooltipContent className="">Pacotes: {packages}</TooltipContent>
