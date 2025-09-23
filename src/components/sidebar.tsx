@@ -41,15 +41,25 @@ export const Sidebar = () => {
         isCollapse ? "w-[84px]" : "w-72"
       )}
     >
+      {/* ALTERAÇÃO: logo clicável para ir ao dash*/}
       {!isCollapse ? (
-        <div className="px-2 py-9 w-full">
+        <Link
+          to="/"
+          aria-label="Ir para o Dashboard"
+          className="px-2 py-9 w-full block"
+        >
           <img src="/complete-logo.png" className="" />
-        </div>
+        </Link>
       ) : (
-        <div className="px-2 py-9 w-full grid place-items-center">
-          <img src="/logo.png" className=""/>
-        </div>
+        <Link
+          to="/"
+          aria-label="Ir para o Dashboard"
+          className="px-2 py-9 w-full grid place-items-center"
+        >
+          <img src="/logo.png" className="" />
+        </Link>
       )}
+      {/* ============================================= */}
 
       <nav className="flex flex-col w-full gap-2 px-4">
         {menuItems.map((item, index) => {
