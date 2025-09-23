@@ -2,11 +2,11 @@ import { create } from "zustand";
 import type { Computer, InOut, Protocol, TopCardsProps } from "@/types/dashboard";
 
 const protocolColors: { [key: string]: string } = {
-  HTTPS: "#0eaacf",
-  HTTP: "#0ea2cf",
-  FTP: "#147c9c",
-  UDP: "#0b6885",
-  TCP: "#06485c",
+  HTTPS: "#00B4D8",
+  HTTP: "#06788f",
+  FTP: "#3B009A",
+  UDP: "#7209B7",
+  TCP: "#560BAD",
   OTHER: "#6b7280",
   DEFAULT: "#06785c",
 };

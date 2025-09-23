@@ -62,27 +62,27 @@ const chartConfig = {
   },
   HTTPS: {
     label: "HTTPS",
-    color: "#0eaacf"
+    color: "#00B4D8"
   },
   HTTP: {
     label: "HTTP",
-    color: "#0ea2cf",
+    color: "#06788f",
   },
   FTP: {
     label: "FTP",
-    color: "#147c9c",
+    color: "#3B009A",
   },
   UDP: {
     label: "UDP",
-    color: "#0b6885",
+    color: "#7209B7",
   },
   TCP: {
     label: "TCP",
-    color: "#06485c",
+    color: "#560BAD",
   },
   OTHER: {
     label: "Outros",
-    color: "#06785c",
+    color: "#6b7280",
   }
 } satisfies ChartConfig;
 

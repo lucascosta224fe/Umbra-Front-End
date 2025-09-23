@@ -37,11 +37,19 @@ export const Sidebar = () => {
   return (
     <aside
       className={cn(
-        "hidden md:flex relative bg-[#1B1A3F] w-[279px] flex-col items-center duration-200 transition-all",
+        "hidden md:flex relative bg-[#1B1A3F] flex-col items-center duration-200 transition-all",
         isCollapse ? "w-[84px]" : "w-72"
       )}
     >
-      <div className="h-[100px] w-full"></div>
+      {!isCollapse ? (
+        <div className="px-2 py-9 w-full">
+          <img src="/complete-logo.png" className="" />
+        </div>
+      ) : (
+        <div className="px-2 py-9 w-full grid place-items-center">
+          <img src="/logo.png" className=""/>
+        </div>
+      )}
 
       <nav className="flex flex-col w-full gap-2 px-4">
         {menuItems.map((item, index) => {
@@ -69,7 +77,7 @@ export const Sidebar = () => {
         })}
       </nav>
       <button
-        className="absolute hidden -right-[1rem] top-[1.5rem] bg-primary rounded-[5px] size-8 md:grid place-items-center cursor pointer transition-all duration-200 ease-in-out cursor-pointer"
+        className="absolute hidden -right-[1rem] top-[3.3rem] bg-primary hover:bg-primary/90 rounded-[5px] size-8 md:grid place-items-center transition-all duration-200 ease-in-out cursor-pointer"
         onClick={() => setCollapse(!isCollapse)}
       >
         <ChevronRight
