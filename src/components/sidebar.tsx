@@ -41,7 +41,6 @@ export const Sidebar = () => {
         isCollapse ? "w-[84px]" : "w-72"
       )}
     >
-      {/* ALTERAÇÃO: logo clicável para ir ao dash*/}
       {!isCollapse ? (
         <Link
           to="/"
@@ -59,7 +58,6 @@ export const Sidebar = () => {
           <img src="/logo.png" className="" />
         </Link>
       )}
-      {/* ============================================= */}
 
       <nav className="flex flex-col w-full gap-2 px-4">
         {menuItems.map((item, index) => {
