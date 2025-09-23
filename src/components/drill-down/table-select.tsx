@@ -4,9 +4,12 @@ import { columnsActive, type ProtocolPayment } from "./table/columns-active";
 import { cn } from "@/lib/utils";
 import { columnsLog, type LogPayment } from "./table/columns-log";
 import { LogTable } from "./table/log-table";
+import { useDrillDownData } from "@/hooks/use-drilldown-data";
 
 export const TableSelect = () => {
   const [current, setCurrent] = useState("log");
+
+  const { selectedComputer } = useDrillDownData();
 
   return (
     <div className="flex flex-col">
@@ -34,33 +37,12 @@ export const TableSelect = () => {
         {current === "log" ? (
           <LogTable columns={columnsLog} data={itemsLog} />
         ) : (
-          <ProtocolsTable columns={columnsActive} data={items} />
+          <ProtocolsTable columns={columnsActive} data={selectedComputer?.sessions || []} />
         )}
       </div>
     </div>
   );
 };
-
-const items: ProtocolPayment[] = [
-  {
-    name: "TCP",
-    localAddress: "127.0.0.1:6463",
-    foreignAddress: "kubernetes:60828",
-    state: "ESTABLISHED",
-  },
-  {
-    name: "TCP",
-    localAddress: "1127.0.0.1:27060",
-    foreignAddress: "kubernetes:62453",
-    state: "SYN_SENT",
-  },
-  {
-    name: "TCP",
-    localAddress: "1127.0.0.1:45654",
-    foreignAddress: "kubernetes:60861",
-    state: "ESTABLISHED",
-  },
-];
 
 const itemsLog: LogPayment[] = [
   {

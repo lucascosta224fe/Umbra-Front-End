@@ -17,6 +17,8 @@ export type Computer = {
   protocols: ProtocolsComputer[];
   packetsIn?: number;
   packetsOut?: number;
+  lineChartData: { time: number; packages: number; tcpError: number }[];
+  sessions: SessionInfo[];
 }
 
 export type ProtocolsComputer = {
@@ -47,3 +49,10 @@ export type TopCardsProps = {
   taxaTráfego?: number;
   tempoMedioResposta?: number;
 };
+
+export type SessionInfo ={
+  protocol: string;
+  localAddress: string;
+  externalAddress: string;
+  status: string;
+}

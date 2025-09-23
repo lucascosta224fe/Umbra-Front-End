@@ -63,7 +63,7 @@ export const DrillDown = () => {
                   {selectedComputer.ipv4}
                 </span>
               </div>
-              <ChartLine />
+              <ChartLine chartData={selectedComputer.lineChartData} />
             </div>
             <GraphSection
               inOutData={computerChartData.inOutData}

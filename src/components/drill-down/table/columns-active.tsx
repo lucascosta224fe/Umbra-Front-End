@@ -1,15 +1,15 @@
 import type { ColumnDef } from "@tanstack/react-table"
 
 export type ProtocolPayment = {
-  name: string
+  protocol: string
   localAddress: string
-  foreignAddress: string
-  state: string
+  externalAddress: string
+  status: string
 }
 
 export const columnsActive: ColumnDef<ProtocolPayment>[] = [
   {
-    accessorKey: "name",
+    accessorKey: "protocol",
     header: "Protocolo",
   },
   {
@@ -17,11 +17,11 @@ export const columnsActive: ColumnDef<ProtocolPayment>[] = [
     header: "Endereço Local",
   },
   {
-    accessorKey: "foreignAddress",
+    accessorKey: "externalAddress",
     header: "Endereço Externo",
   },
   {
-    accessorKey: "state",
+    accessorKey: "status",
     header: "Estado",
   },
 ]
