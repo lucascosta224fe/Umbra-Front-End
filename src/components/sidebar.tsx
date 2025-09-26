@@ -8,14 +8,22 @@ import {
   Radar,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-
-const menuItems = [
-  { title: "Dashboard", icon: Home, path: "/" },
-  // { title: "Métricas", icon: ChartColumn, path: "/metricas" },
-  { title: "Drilldown", icon: Radar, path: "/drilldown" },
-];
+import { useDrillDownStore } from "@/store/drilldown-store";
 
 export const Sidebar = () => {
+  const { query } = useDrillDownStore();
+
+  const menuItems = [
+    { title: "Dashboard", icon: Home, path: "/", pathBase: "/" },
+    // { title: "Métricas", icon: ChartColumn, path: "/metricas" },
+    {
+      title: "Drilldown",
+      icon: Radar,
+      path: query ? `/drilldown?computer=${query}` : "/drilldown",
+      pathBase: "/drilldown"
+    },
+  ];
+
   const [isCollapse, setCollapse] = useState(false);
   const { pathname } = useLocation();
 
@@ -68,7 +76,7 @@ export const Sidebar = () => {
               key={index}
               className={cn(
                 "text-[#BFCDE0] px-4 py-2 flex items-center gap-3 hover:text-white hover:bg-primary/30 rounded-[5px] w-full font-bold duration-200 transition-all",
-                pathname == item.path ? "bg-primary text-white" : ""
+                pathname == item.pathBase ? "bg-primary text-white" : ""
               )}
             >
               {Icon && <Icon className="size-5" />}

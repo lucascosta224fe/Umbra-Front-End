@@ -4,6 +4,7 @@ import { copyToClipboard } from "../../utils/copy-to-keyboard";
 import type { ComputerCardProps } from "../../types/dashboard";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import { useNavigate } from "react-router";
+import { useDrillDownStore } from "@/store/drilldown-store";
 
 export function ComputerCard({
   name,
@@ -17,7 +18,10 @@ export function ComputerCard({
   const pct = Math.min(Math.max(usagePct, 0), 100);
   const navigate = useNavigate()
 
+  const { updateQuery } = useDrillDownStore();
+
   const handleRedirect = () => {
+    updateQuery((name + 1).toString())
     navigate(`/drilldown?computer=${name + 1}`)
   }
 
