@@ -15,7 +15,7 @@
       <a href="começando">Começando</a>
       <ul>
         <li><a href="#pré-requisitos">Pré requisitos</a></li>
-        <li><a href="#running-the-project">Rodando o Projeto</a></li>
+        <li><a href="#rodando-o-projeto">Rodando o Projeto</a></li>
       </ul>
     </li>
     <li><a href="#contato">Contato</a></li>
@@ -27,6 +27,8 @@
 ## Umbra
 
 Umbra foi o nome dado ao nosso projeto que tem o objetivo de fornecer uma visualização em tempo real e interativa do tráfego de rede de um servidor alvo, essencial para monitoramento e análise de carga.
+
+<img width="1901" height="989" alt="image" src="https://github.com/user-attachments/assets/53fea668-1b00-4ed2-8e6b-645e2080af3e" />
 
 ### Resumo
 
@@ -49,8 +51,6 @@ O sistema processa os dados com delays de cinco segundos, agregando o volume de 
 Para ter uma cópia local deste projeto, siga estes passos.
 
 ### Pré Requisitos
-
-Exemplo: 
 
 Antes de começar, tenha certeza de que as seguintes ferramentas estão instaladas em sua máquina:
 
@@ -84,12 +84,23 @@ Também é recomendável usar um editor de código como o [VSCode](https://code.
 
 Nossa Equipe:
 
-* **Pedro Costa**: https://github.com/Batsy13
-* **Nathan**: https://github.com/Nathaan30
-* **Gabriel Peixoto**: - https://github.com/HitokiriGD
+* **Pedro Costa** [FrontEnd]: https://github.com/Batsy13
+* **Nathan** [FrontEnd]: https://github.com/Nathaan30
+* **Gabriel Peixoto** [FrontEnd]: https://github.com/HitokiriGD
+* **Ironildo** [BackEnd]: https://github.com/Ironildo-Jr
+* **Gabriel Rodrigues** [BackEnd]: https://www.github.com/GabrielRoOl
+* **Paulo** [BackEnd]: https://github.com/PSRprogam
+* **Lucas Costa** [BackEnd/Segurança]: https://github.com/lucascosta224fe
+* **Felipe** [Backend]: https://github.com/FelipeLucas16
+
+Contribuidores deste repositório:
+
+<a href="https://github.com/lucascosta224fe/Umbra-Front-End/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=lucascosta224fe/Umbra-Front-End" alt="contrib.rocks image" />
+</a>
 
 
-Projeto:
+## Projeto:
 
 * **Link do Projeto**: [Umbra no Github](https://github.com/lucascosta224fe/Umbra-Front-End.git)
 * **Figma**: [Figma](https://www.figma.com/design/RCQpj5x2Dy3cVX0HkWhV8y/Umbra?node-id=1-6&t=zZeNSQqPfef6ctvN-1)
@@ -104,3 +115,4 @@ Projeto:
 [React-url]: https://reactjs.org/
 [Shadcn]: https://img.shields.io/badge/shadcn%2Fui-000?logo=shadcnui&logoColor=fff&style=for-the-badge
 [Shadcn-url]: https://ui.shadcn.com
+
