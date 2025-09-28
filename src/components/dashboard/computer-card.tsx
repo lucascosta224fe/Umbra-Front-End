@@ -64,7 +64,7 @@ export function ComputerCard({
             className="mt-2 inline-block rounded-md bg-[#BFCDE0] px-3 py-1 text-[14px] text-[#1B1A3F] cursor-pointer h-[29px]"
             onClick={() => copyToClipboard(mac)}
           >
-            {mac ?? "Não possui endereço mac"}
+            {mac ?? "Mac indisponível"}
           </div>
         </div>
 
@@ -76,7 +76,7 @@ export function ComputerCard({
             className="mt-2 inline-block max-w-full truncate rounded-md bg-[#BFCDE0] px-3 py-1 text-[14px] text-[#1B1A3F] cursor-pointer h-[29px]"
             onClick={() => copyToClipboard(ipv6)}
           >
-            {ipv6}
+            {ipv6 ?? "IPv6 indisponível"}
           </div>
         </div>
       </div>

@@ -34,6 +34,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -144,7 +151,7 @@ export function LogTable<TData, TValue>({
                   data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id} className="p-6 text-white">
+                    <TableCell key={cell.id} className="p-3 text-white">
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()
@@ -166,7 +173,55 @@ export function LogTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
+      <div className="flex flex-col sm:flex-row items-center justify-between py-4 space-x-2 gap-4">
+        <div className="flex text-description text-sm font-medium">
+          Page {table.getState().pagination.pageIndex + 1} of{" "}
+          {table.getPageCount()}
+        </div>
+        <div className="flex items-center space-x-2 text-description">
+          <p className="text-sm font-medium">Linhas por página</p>
+          <Select
+            value={`${table.getState().pagination.pageSize}`}
+            onValueChange={(value) => {
+              table.setPageSize(Number(value));
+            }}
+          >
+            <SelectTrigger className="h-8 w-[70px]">
+              <SelectValue placeholder={table.getState().pagination.pageSize} />
+            </SelectTrigger>
+            <SelectContent
+              side="top"
+              className="bg-card border border-primary text-text"
+            >
+              {[10, 20, 25, 30, 40, 50].map((pageSize) => (
+                <SelectItem key={pageSize} value={`${pageSize}`}>
+                  {pageSize}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="flex gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+            className="text-white bg-card border-primary/40"
+          >
+            Previous
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+            className="text-white bg-card border-primary/40"
+          >
+            Next
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }
-

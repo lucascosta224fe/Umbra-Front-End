@@ -47,11 +47,11 @@ export const DrillDown = () => {
 
   return (
     <div>
-      <div className="p-10">
+      <div className="px-4 pt-4 sm:p-10">
         <h1 className="text-text text-[40px] font-bold">Drill-Down</h1>
       </div>
 
-      <div className="px-10 py-5">
+      <div className="px-4 sm:px-10 py-5">
         <div className="flex flex-col gap-5">
           <div className="grid 2xl:grid-cols-[1fr_400px] gap-5">
             <div className="flex flex-col gap-2">

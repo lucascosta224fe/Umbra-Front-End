@@ -1,12 +1,13 @@
-import type { ColumnDef } from "@tanstack/react-table"
+import type { ColumnDef } from "@tanstack/react-table";
+import { DataTableColumnHeader } from "./data-table-column-header";
 
 export type LogPayment = {
-  source: string
-  destination: string
-  protocol: string
-  length: string
-  info: string
-}
+  source: string;
+  destination: string;
+  protocol: string;
+  length: string;
+  info: string;
+};
 
 export const columnsLog: ColumnDef<LogPayment>[] = [
   {
@@ -19,14 +20,18 @@ export const columnsLog: ColumnDef<LogPayment>[] = [
   },
   {
     accessorKey: "protocol",
-    header: "Protocolo",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Protocolo" />
+    ),
   },
   {
     accessorKey: "length",
-    header: "Tamanho",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Protocolo" />
+    ),
   },
   {
     accessorKey: "info",
     header: "Informação",
   },
-]
+];

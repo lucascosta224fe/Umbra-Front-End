@@ -11,10 +11,10 @@ export function Dashboard() {
 
   return (
     <div>
-      <div className="p-10">
+      <div className="px-4 pt-4 sm:p-10">
         <h1 className="text-text text-[40px] font-bold">Dashboard</h1>
       </div>
-      <div className="flex flex-col gap-5 px-10 py-5">
+      <div className="flex flex-col gap-5 px-4 sm:px-10 py-5">
         <TopCards {...topCardsData} />
         <div className="flex flex-col 2xl:grid xl:grid-cols-[1fr_333px] gap-6">
           <ComputersSection computers={computers} />

@@ -19,6 +19,7 @@ export type Computer = {
   packetsOut?: number;
   lineChartData: { time: number; packages: number; tcpError: number }[];
   sessions: SessionInfo[];
+  logs: Logs[];
 }
 
 export type ProtocolsComputer = {
@@ -55,4 +56,12 @@ export type SessionInfo ={
   localAddress: string;
   externalAddress: string;
   status: string;
+}
+
+export type Logs = {
+    source: string,
+    destination: string,
+    protocol: string,
+    length: string,
+    info: string,
 }
