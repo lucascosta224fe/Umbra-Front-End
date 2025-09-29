@@ -12,7 +12,7 @@
       </ul>
     </li>
     <li>
-      <a href="começando">Começando</a>
+      <a href="primeiros-passos">Primeiros Passos</a>
       <ul>
         <li><a href="#pré-requisitos">Pré requisitos</a></li>
         <li><a href="#rodando-o-projeto">Rodando o Projeto</a></li>
@@ -115,4 +115,5 @@ Contribuidores deste repositório:
 [React-url]: https://reactjs.org/
 [Shadcn]: https://img.shields.io/badge/shadcn%2Fui-000?logo=shadcnui&logoColor=fff&style=for-the-badge
 [Shadcn-url]: https://ui.shadcn.com
+
 
