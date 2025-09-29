@@ -1,5 +1,3 @@
-"use client";
-
 import {
   flexRender,
   getCoreRowModel,
@@ -91,7 +89,7 @@ export function LogTable<TData, TValue>({
           <DropdownMenuTrigger asChild>
             <Button
               variant="outline"
-              className="ml-auto text-white border border-primary bg-card hover:bg-primary/80 hover:text-white ring-0 focus-visible:ring-offset-0 focus-visible:ring-0"
+              className="ml-auto text-white border gap-2 border-primary bg-card hover:bg-primary/80 hover:text-white ring-0 focus-visible:ring-offset-0 focus-visible:ring-0"
             >
               Colunas
               <ChevronDown className="w-4 h-4 ml-2" />

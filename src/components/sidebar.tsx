@@ -1,8 +1,6 @@
 import { Link, useLocation } from "react-router";
 import { cn } from "../lib/utils";
 import {
-  ChartColumn,
-  ChevronLeft,
   ChevronRight,
   Home,
   Radar,
@@ -55,7 +53,7 @@ export const Sidebar = () => {
           aria-label="Ir para o Dashboard"
           className="px-2 py-9 w-full block"
         >
-          <img src="/complete-logo.png" className="" />
+          <img src="/complete-logo.png" alt="site logo" />
         </Link>
       ) : (
         <Link
@@ -63,17 +61,17 @@ export const Sidebar = () => {
           aria-label="Ir para o Dashboard"
           className="px-2 py-9 w-full grid place-items-center"
         >
-          <img src="/logo.png" className="" />
+          <img src="/logo.png" alt="site logo" />
         </Link>
       )}
 
       <nav className="flex flex-col w-full gap-2 px-4">
-        {menuItems.map((item, index) => {
+        {menuItems.map((item) => {
           const Icon = item.icon;
           return (
             <Link
               to={item.path}
-              key={index}
+              key={item.title}
               className={cn(
                 "text-[#BFCDE0] px-4 py-2 flex items-center gap-3 hover:text-white hover:bg-primary/30 rounded-[5px] w-full font-bold duration-200 transition-all",
                 pathname == item.pathBase ? "bg-primary text-white" : ""

@@ -27,7 +27,7 @@ export const columnsLog: ColumnDef<LogPayment>[] = [
   {
     accessorKey: "length",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Protocolo" />
+      <DataTableColumnHeader column={column} title="Tamanho" />
     ),
   },
   {

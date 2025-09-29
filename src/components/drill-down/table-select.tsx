@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { ProtocolsTable } from "./table/protocols-table";
-import { columnsActive, type ProtocolPayment } from "./table/columns-active";
+import { columnsActive } from "./table/columns-active";
 import { cn } from "@/lib/utils";
-import { columnsLog, type LogPayment } from "./table/columns-log";
+import { columnsLog } from "./table/columns-log";
 import { LogTable } from "./table/log-table";
 import { useDrillDownData } from "@/hooks/use-drilldown-data";
 

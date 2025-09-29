@@ -1,9 +1,6 @@
-"use client";
-
 import {
   flexRender,
   getCoreRowModel,
-  getPaginationRowModel,
   useReactTable,
   getSortedRowModel,
   getFilteredRowModel,
@@ -50,6 +47,7 @@ export function ProtocolsTable<TData, TValue>({
   );
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
+  const [globalFilter, setGlobalFilter] = React.useState("");
 
   const table = useReactTable({
     data,
@@ -60,10 +58,12 @@ export function ProtocolsTable<TData, TValue>({
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
+    onGlobalFilterChange: setGlobalFilter,
     state: {
       sorting,
       columnFilters,
       columnVisibility,
+      globalFilter,
     },
   });
 
@@ -71,20 +71,16 @@ export function ProtocolsTable<TData, TValue>({
     <div className="pb-4">
       <div className="flex items-center gap-4 py-4">
         <Input
-          placeholder="Endereço Local"
-          value={
-            (table.getColumn("localAddress")?.getFilterValue() as string) ?? ""
-          }
-          onChange={(event) =>
-            table.getColumn("localAddress")?.setFilterValue(event.target.value)
-          }
+          placeholder="Pesquisar em todas as colunas..."
+          value={globalFilter ?? ""}
+          onChange={(event) => setGlobalFilter(event.target.value)}
           className="max-w-sm px-4 py-6 text-white focus:border-primary focus-visible:border-primary outline-offset-4"
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
               variant="outline"
-              className="ml-auto text-white border border-primary bg-card hover:bg-primary/80 hover:text-white ring-0 focus-visible:ring-offset-0 focus-visible:ring-0"
+              className="ml-auto text-white border border-primary gap-4 bg-card hover:bg-primary/80 hover:text-white ring-0 focus-visible:ring-offset-0 focus-visible:ring-0"
             >
               Colunas
               <ChevronDown />

@@ -16,7 +16,6 @@ import type { ProtocolsDataProps } from "@/types/graphs";
 
 export const description = "Gráfico em pizza dos protocolos de rede";
 
-
 export function ProtocolsChart({ chartData }: { chartData: ProtocolsDataProps[] }) {
   const totalPackets = chartData?.reduce((acc, curr) => acc + curr.pacotes, 0);
   const hasData = totalPackets && totalPackets > 0;
