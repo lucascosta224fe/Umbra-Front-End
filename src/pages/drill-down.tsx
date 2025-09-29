@@ -5,10 +5,17 @@ import { ChartLine } from "@/components/charts/chart-line";
 import { useDashboardConnection } from "@/hooks/use-dashboard-connection";
 import { Link } from "react-router";
 import { useDrillDownData } from "@/hooks/use-drilldown-data";
+import { ConnectionError } from "@/components/error/dashboard-error";
 
 export const DrillDown = () => {
-  useDashboardConnection();
-  const { computerId, selectedComputer, computerChartData } = useDrillDownData();
+  const { hasError } = useDashboardConnection();
+  
+  const { computerId, selectedComputer, computerChartData } =
+    useDrillDownData();
+
+  if (hasError) {
+    return <ConnectionError />;
+  }
 
   if (!computerId) {
     return (

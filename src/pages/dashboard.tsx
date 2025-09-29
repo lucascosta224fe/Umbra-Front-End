@@ -3,11 +3,16 @@ import { GraphSection } from "@/components/graph-section";
 import { TopCards } from "@/components/dashboard/top-cards";
 import { useDashboardStore } from "@/store/dashboard-store";
 import { useDashboardConnection } from "@/hooks/use-dashboard-connection";
+import { ConnectionError } from "@/components/error/dashboard-error";
 
 export function Dashboard() {
-  useDashboardConnection();
+  const { hasError } = useDashboardConnection();
 
   const { topCardsData, computers, inOutData, protocolsData } = useDashboardStore();
+
+  if(hasError){
+    return <ConnectionError />
+  }
 
   return (
     <div>
